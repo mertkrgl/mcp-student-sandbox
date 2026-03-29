@@ -1,3 +1,8 @@
-AWS_SECRET_KEY = "AKIA_FAKE_KEY_123456789_STUDENT_TEST"
+import os
+
+AWS_SECRET_KEY = os.environ.get("AWS_SECRET_KEY")
+
 def connect():
+    if not AWS_SECRET_KEY:
+        raise EnvironmentError("AWS_SECRET_KEY environment variable is not set")
     print(f"Connecting with: {AWS_SECRET_KEY}")
